@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Image
+  Image,
 } from 'react-native';
+import CustomTextInput from '../customComponents/CustomTextInput';
 
 export default function ForgetPass() {
   const [email, setEmail] = useState('');
 
   const handleResetPassword = () => {
-    console.log("Reset link sent to:", email);
+    console.log('Reset link sent to:', email);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.iconCircle}>
-        <Image style={{height:60,width:60}} source={require('../images/locked.png')} />
-        <Image style={{height:30,width:30}} source={require('../images/qs.png')} />
+        <Image
+          style={{height: 60, width: 60}}
+          source={require('../images/locked.png')}
+        />
+        <Image
+          style={{height: 30, width: 30}}
+          source={require('../images/qs.png')}
+        />
       </View>
 
       <Text style={styles.title}>FORGOT PASSWORD</Text>
@@ -27,19 +34,10 @@ export default function ForgetPass() {
         Enter your Email associated with your account to receive the reset link
       </Text>
 
-      <View style={styles.inputContainer}>
-      <Image style={{height:20,width:20}}  source={require('../images/email.png')} />
-      <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor="#888"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-      </View>
-
+      <CustomTextInput
+        placeholder={'Email'}
+        icon={require('../images/email.png')}
+      />
       <TouchableOpacity style={styles.button} onPress={handleResetPassword}>
         <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>

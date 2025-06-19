@@ -1,52 +1,36 @@
-// import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-// import React from 'react'
-
-// const CommonButton = (onPress, title, bgColor,textColor) => {
-//     return (
-//         <TouchableOpacity style=
-//         {{ backgroundColor: bgColor, justifyContent: 'center', alignItems: 'center', }} onPress={()=>
-//         {
-//             onPress
-//         }
-//         }>
-//             <Text style={{color:textColor,}}>{title}</Text> 
-//         </TouchableOpacity>
-//     )
-// }
-
-// export default CommonButton
-
-// const styles = StyleSheet.create({})
-
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
+import {TouchableOpacity, Text, StyleSheet, View, Image} from 'react-native';
 
-const CommonButton = ({ onPress, title, bgColor, textColor }) => {
+const CommonButton = ({onPress, title, bgColor, textColor, icon}) => {
   return (
-    <TouchableOpacity 
-      style={[styles.button, { backgroundColor: bgColor }]}
-      onPress={onPress} // Corrected this line
-      activeOpacity={0.7}
-    >
-      <Text style={[styles.text, { color: textColor }]}>{title}</Text> 
+    <TouchableOpacity style={[styles.button, {}]} onPress={onPress}>
+      {icon && <Image source={icon} style={styles.icon} />}
+      <Text style={[styles.text, {color: textColor}]}>{title}</Text>
     </TouchableOpacity>
   );
 };
 
-export default CommonButton;
-
 const styles = StyleSheet.create({
   button: {
-    width: '85%',
+    backgroundColor: '#00c6ba',
     height: 50,
+    marginTop: 20,
     borderRadius: 10,
-    alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 40,
+    flexDirection: 'row',
+    elevation: 3,
   },
   text: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    tintColor: 'white',
+    marginRight: 10,
   },
 });
+
+export default CommonButton;

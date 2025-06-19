@@ -1,36 +1,27 @@
-// import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
-// import React from 'react'
-
-// const CustomTextInput = (value,onChangeText,placeholder,icon,type) => {
-//   return (
-//     <View style={{width:'85%',height:50,borderWidth:1,borderRadius:10,alignSelf:'center',marginTop:30,
-//         flexDirection:'row',alignItems:'center',paddingLeft:20, paddingRight:20
-//     }} >  
-//     <Image source={icon} style={{width:24, height:24}}/>
-//     <TextInput placeholder={placeholder} style={{marginLeft:10}} keyboardType={type?type:'default'}/>
-//     </View>
-//   )
-// }
-
-// export default CustomTextInput
-
-// const styles = StyleSheet.create({})
-
-
-import { Image, StyleSheet, TextInput, View } from 'react-native';
 import React from 'react';
+import {View, TextInput, Image, StyleSheet} from 'react-native';
 
-const CustomTextInput = ({ value, onChangeText, placeholder, icon, type, keyboardType }) => {
+const CustomTextInput = ({
+  icon,
+  placeholder,
+  value,
+  onChangeText,
+  type,
+  keyboardType,
+  error,
+}) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={[styles.inputWrapper, error ? styles.errorBorder : null]}>
       {icon && <Image source={icon} style={styles.icon} />}
-      <TextInput 
-        placeholder={placeholder} 
-        style={styles.input} 
-        value={value} 
-        onChangeText={onChangeText} 
-        secureTextEntry={type? true:false}
-        keyboardType={keyboardType?keyboardType:'default'}      />
+      <TextInput
+        placeholder={placeholder}
+        style={styles.input}
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={type === 'password'}
+        keyboardType={keyboardType || 'default'}
+        placeholderTextColor="#999"
+      />
     </View>
   );
 };
@@ -38,24 +29,26 @@ const CustomTextInput = ({ value, onChangeText, placeholder, icon, type, keyboar
 export default CustomTextInput;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    width: '85%',
-    height: 50,
-    borderWidth: 1,
-    borderRadius: 10,
-    alignSelf: 'center',
-    marginTop: 30,
+  inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: 20,
-    paddingRight: 20,
+    backgroundColor: 'white',
+    borderRadius: 25,
+    paddingHorizontal: 15,
+    marginVertical: 10,
+  },
+  input: {
+    flex: 1,
+    padding: 10,
+    color: '#000',
   },
   icon: {
     width: 24,
     height: 24,
+    marginRight: 10,
   },
-  input: {
-    marginLeft: 10,
-    flex: 1,
+  errorBorder: {
+    borderWidth: 1,
+    borderColor: 'red',
   },
 });

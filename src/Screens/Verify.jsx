@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useState, useRef, useEffect } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import React, {useState, useRef, useEffect} from 'react';
 import {
   View,
   Text,
@@ -20,13 +20,12 @@ const Verify = () => {
   useEffect(() => {
     if (timer === 0) return;
     const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
+      setTimer(prev => prev - 1);
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
 
   const handleChange = (text, index) => {
-   
     if (text.length > 1) return;
     const newOtp = [...otp];
     newOtp[index] = text;
@@ -36,16 +35,19 @@ const Verify = () => {
       inputRefs.current[index + 1].focus();
     }
   };
-  const navigation= useNavigation()
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.innerContainer}>
-       
-        <TouchableOpacity onPress={()=>{
-            navigation.goBack()
-        }} style={styles.backButton}>
-        
-         <Image  style={{height:24, width:24,tintColor:"#fff"}}source={require('../images/back.png')}/>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={styles.backButton}>
+          <Image
+            style={{height: 24, width: 24, tintColor: '#fff'}}
+            source={require('../images/back.png')}
+          />
         </TouchableOpacity>
 
         {/* Title */}
@@ -53,27 +55,29 @@ const Verify = () => {
 
         {/* Avatar */}
         <View style={styles.avatar}>
-        <Image  style={{height:70, width:70,}}source={require('../images/profile.png')}/>
-
+          <Image
+            style={{height: 70, width: 70}}
+            source={require('../images/profile.png')}
+          />
         </View>
 
-        
         <Text style={styles.name}>Grachica Zoya</Text>
         <Text style={styles.email}>grachicazoya12@gmail.com</Text>
 
-        
         <View style={styles.infoBox}>
-        <Image  style={{height:24, width:24,}}source={require('../images/warn.png')}/>
+          <Image
+            style={{height: 24, width: 24}}
+            source={require('../images/warn.png')}
+          />
 
           <Text style={styles.infoText}>
-            We have sent you a 6-digit verification code to your email. Kindly check.
+            We have sent you a 6-digit verification code to your email. Kindly
+            check.
           </Text>
         </View>
 
-        
         <Text style={styles.timer}>00:{timer < 10 ? `0${timer}` : timer}</Text>
 
-       
         <View style={styles.otpContainer}>
           {otp.map((digit, index) => (
             <TextInput
@@ -82,13 +86,12 @@ const Verify = () => {
               keyboardType="numeric"
               maxLength={1}
               value={digit}
-              onChangeText={(text) => handleChange(text, index)}
-              ref={(ref) => (inputRefs.current[index] = ref)}
+              onChangeText={text => handleChange(text, index)}
+              ref={ref => (inputRefs.current[index] = ref)}
             />
           ))}
         </View>
 
-       
         <View style={styles.resendContainer}>
           <Text style={styles.resendText}>Didn’t receive OTP? </Text>
           <TouchableOpacity onPress={() => setTimer(30)}>
@@ -96,7 +99,7 @@ const Verify = () => {
           </TouchableOpacity>
         </View>
       </View>
-      </View>
+    </View>
   );
 };
 

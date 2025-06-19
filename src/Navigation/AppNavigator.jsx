@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
 import Login from '../Screens/Login';
 import Register from '../Screens/Auth';
 import Verify from '../Screens/Verify';
@@ -15,27 +15,26 @@ const AppNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="Auth" 
-          component={Auth} 
-          options={{ headerShown: false }} 
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{headerShown: false}}
         />
-         <Stack.Screen 
-          name="Verify" 
-          component={Verify} 
-          options={{ headerShown: false }} 
+        <Stack.Screen
+          name="Verify"
+          component={Verify}
+          options={{headerShown: false}}
         />
-        <Stack.Screen 
-          name="Register" 
-          component={Register} 
-          options={{ headerShown: false }} 
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{headerShown: false}}
         />
-        <Stack.Screen 
-          name="ForgetPass" 
-          component={ForgetPass} 
-          options={{ headerShown: false }} 
-        /> 
-        
+        <Stack.Screen
+          name="ForgetPass"
+          component={ForgetPass}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

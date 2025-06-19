@@ -82,7 +82,7 @@ const Login = ({onSwitch}) => {
             <Text style={styles.link}>Forget Password?</Text>
           </TouchableOpacity>
         </View>
-
+  
         <TouchableOpacity
           onPress={() => {
             navigation.navigate('Verify');
