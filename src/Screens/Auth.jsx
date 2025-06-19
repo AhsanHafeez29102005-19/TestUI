@@ -1,4 +1,4 @@
-// Updated Auth.js using CustomTextInput and CommonButton with AuthStyles
+
 import React, {useState} from 'react';
 import {View, Text, Dimensions, SafeAreaView, Alert} from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
