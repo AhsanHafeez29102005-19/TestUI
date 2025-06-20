@@ -40,7 +40,7 @@ const Auth = () => {
       valid = false;
     } else setPasswordError('');
 
-    if (valid) navigation.navigate('Verify');
+    if (valid) navigation.navigate('Home');
   };
 
   const handleRegister = () => {
@@ -212,3 +212,4 @@ const Auth = () => {
 };
 
 export default Auth;
+      

@@ -1,12 +1,12 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 
-const { width } = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
 const AuthStyles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#028d85' },
-  top: { alignItems: 'center', paddingTop: 60, paddingBottom: 30 },
-  welcome: { fontSize: 16, color: 'white' },
-  title: { fontSize: 22, fontWeight: 'bold', color: 'white', marginVertical: 10 },
+  container: {flex: 1, backgroundColor: '#028d85'},
+  top: {alignItems: 'center', paddingTop: 60, paddingBottom: 30},
+  welcome: {fontSize: 16, color: 'white'},
+  title: {fontSize: 22, fontWeight: 'bold', color: 'white', marginVertical: 10},
   toggleContainer: {
     flexDirection: 'row',
     backgroundColor: '#1ca69c',
@@ -36,8 +36,8 @@ const AuthStyles = StyleSheet.create({
     borderTopRightRadius: 30,
     padding: 20,
   },
-  heading: { fontSize: 18, color: 'white', fontWeight: 'bold' },
-  subText: { color: 'gray', marginBottom: 20 },
+  heading: {fontSize: 18, color: 'white', fontWeight: 'bold'},
+  subText: {color: 'gray', marginBottom: 20},
   checkboxRow: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -50,8 +50,8 @@ const AuthStyles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 10,
   },
-  link: { color: '#00c6ba', fontWeight: '500' },
-  errorText: { color: 'red', marginTop: 5, marginLeft: 20 },
+  link: {color: '#00c6ba', fontWeight: '500'},
+  errorText: {color: 'red', marginTop: 5, marginLeft: 20},
 });
 
 export default AuthStyles;

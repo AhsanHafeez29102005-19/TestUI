@@ -15,6 +15,7 @@ export default function ForgetPass() {
   const handleResetPassword = () => {
     console.log('Reset link sent to:', email);
   };
+  
 
   return (
     <View style={styles.container}>
@@ -28,7 +29,7 @@ export default function ForgetPass() {
           source={require('../images/qs.png')}
         />
       </View>
-
+      
       <Text style={styles.title}>FORGOT PASSWORD</Text>
       <Text style={styles.subtitle}>
         Enter your Email associated with your account to receive the reset link

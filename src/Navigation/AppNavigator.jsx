@@ -8,6 +8,7 @@ import Verify from '../Screens/Verify';
 import ForgotPasswordScreen from '../Screens/ForgetPass';
 import ForgetPass from '../Screens/ForgetPass';
 import Auth from '../Screens/Auth';
+import Home from '../Screens/Home';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +34,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="ForgetPass"
           component={ForgetPass}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
