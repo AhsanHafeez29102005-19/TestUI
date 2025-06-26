@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, View, Image} from 'react-native';
 
-const CommonButton = ({onPress, title, bgColor, textColor, icon}) => {
+const CommonButton = ({onPress, title, bgColor, textColor, icon,style}) => {
   return (
     <TouchableOpacity style={[styles.button, {}]} onPress={onPress}>
       {icon && <Image source={icon} style={styles.icon} />}
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#00c6ba',
     height: 50,
     marginTop: 20,
-    borderRadius: 10,
+    borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',

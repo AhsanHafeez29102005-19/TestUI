@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -6,27 +6,24 @@ import {
   Image,
   StyleSheet,
   ScrollView,
-  Alert,
-  Linking,
+  Platform,
 } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Video from 'react-native-video';
 
-const Home = () => {
+const Profile = () => {
   const [profilePic, setProfilePic] = useState(null);
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [playVideo, setPlayVideo] = useState(false); 
 
   const pickProfilePic = () => {
-    launchImageLibrary({ mediaType: 'photo' }, response => {
+    launchImageLibrary({mediaType: 'photo'}, response => {
       if (!response.didCancel && !response.errorCode) {
         setProfilePic(response.assets[0]);
       }
     });
   };
-  
 
   const pickDocument = async () => {
     try {
@@ -42,17 +39,10 @@ const Home = () => {
   };
 
   const pickVideo = () => {
-    launchImageLibrary({ mediaType: 'video' }, response => {
+    launchImageLibrary({mediaType: 'video'}, response => {
       if (!response.didCancel && !response.errorCode) {
         setSelectedVideo(response.assets[0]);
-        setPlayVideo(false); // reset on new pick
       }
-    });
-  };
-
-  const openFile = (uri) => {
-    Linking.openURL(uri).catch(() => {
-      Alert.alert('Error', 'Unable to open file.');
     });
   };
 
@@ -60,89 +50,46 @@ const Home = () => {
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={styles.title}>My Profile</Text>
 
-      {/* Profile Image */}
       <TouchableOpacity onPress={pickProfilePic} style={styles.picWrapper}>
         {profilePic ? (
-          <Image source={{ uri: profilePic.uri }} style={styles.profilePic} />
+          <Image source={{uri: profilePic.uri}} style={styles.profilePic} />
         ) : (
           <Text style={styles.placeholder}>Pick Profile Picture</Text>
         )}
       </TouchableOpacity>
 
-      {profilePic && (
-        <TouchableOpacity
-          style={[styles.button, { backgroundColor: '#d9534f' }]}
-          onPress={() => setProfilePic(null)}>
-          <Text style={styles.buttonText}>❌ Delete Profile Image</Text>
-        </TouchableOpacity>
-      )}
-
-      {/* Document Section */}
       <View style={styles.card}>
         <TouchableOpacity onPress={pickDocument} style={styles.button}>
           <Text style={styles.buttonText}>📄 Select Document</Text>
         </TouchableOpacity>
-
         {selectedDoc && (
-          <>
-            <Text style={styles.fileInfo}>Selected: {selectedDoc.name}</Text>
-
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#5cb85c' }]}
-              onPress={() => openFile(selectedDoc.uri)}>
-              <Text style={styles.buttonText}>📂 Open Document</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#d9534f' }]}
-              onPress={() => setSelectedDoc(null)}>
-              <Text style={styles.buttonText}>❌ Delete Document</Text>
-            </TouchableOpacity>
-          </>
+          <Text style={styles.fileInfo}>Selected: {selectedDoc.name}</Text>
         )}
       </View>
 
-      {/* Video Section */}
       <View style={styles.card}>
         <TouchableOpacity onPress={pickVideo} style={styles.button}>
           <Text style={styles.buttonText}>🎥 Select Video</Text>
         </TouchableOpacity>
-
         {selectedVideo && (
-          <>
-            <Text style={styles.fileInfo}>Selected: {selectedVideo.fileName}</Text>
-
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#5bc0de' }]}
-              onPress={() => setPlayVideo(true)}>
-              <Text style={styles.buttonText}>▶️ Play Video</Text>
-            </TouchableOpacity>
-
-            {playVideo && (
-              <Video
-                source={{ uri: selectedVideo.uri }}
-                style={styles.video}
-                controls
-                resizeMode="cover"
-              />
-            )}
-
-            <TouchableOpacity
-              style={[styles.button, { backgroundColor: '#d9534f' }]}
-              onPress={() => {
-                setSelectedVideo(null);
-                setPlayVideo(false);
-              }}>
-              <Text style={styles.buttonText}>❌ Delete Video</Text>
-            </TouchableOpacity>
-          </>
+          <View style={styles.videoContainer}>
+            <Text style={styles.fileInfo}>
+              Selected: {selectedVideo.fileName}
+            </Text>
+            <Video
+              source={{uri: selectedVideo.uri}}
+              style={styles.video}
+              controls
+              resizeMode="cover"
+            />
+          </View>
         )}
       </View>
     </ScrollView>
   );
 };
 
-export default Home;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {
@@ -165,11 +112,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 30,
     elevation: 5,
     shadowColor: '#000',
     shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowRadius: 5,
     overflow: 'hidden',
   },
@@ -191,7 +138,7 @@ const styles = StyleSheet.create({
     elevation: 4,
     shadowColor: '#000',
     shadowOpacity: 0.1,
-    shadowOffset: { width: 0, height: 3 },
+    shadowOffset: {width: 0, height: 3},
     shadowRadius: 6,
   },
   button: {
@@ -209,14 +156,17 @@ const styles = StyleSheet.create({
   fileInfo: {
     color: '#444',
     fontSize: 14,
-    marginBottom: 10,
-    textAlign: 'center',
+    marginTop: 6,
+  },
+  videoContainer: {
+    marginTop: 10,
+    alignItems: 'center',
   },
   video: {
     width: '100%',
     height: 200,
     borderRadius: 10,
-    marginTop: 10,
+    marginTop: 8,
     backgroundColor: '#000',
   },
 });

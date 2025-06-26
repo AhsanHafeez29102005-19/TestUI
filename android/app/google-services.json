@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "897459287789",
+    "project_id": "testui-66f09",
+    "storage_bucket": "testui-66f09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897459287789:android:8cc0bc42838768916cfee4",
+        "android_client_info": {
+          "package_name": "com.testui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "897459287789-nviv7k7qf2pddfqh3qm70dj0nj0henna.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUIyi00OX6de8DJryCFQkuT6j_VAjGJH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "897459287789-nviv7k7qf2pddfqh3qm70dj0nj0henna.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
